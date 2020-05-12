@@ -1,5 +1,5 @@
 {
-  "*.js": [
+  "*.{js,ts,tsx}": [
     "yarn lint --fix",
     "cross-env CI=true yarn test --findRelatedTests"
   ]

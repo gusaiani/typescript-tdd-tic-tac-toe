@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { Board } from './App.styled'
+import Button from './components/Button/Button'
+import './App.css'
+
+const initialTiles: number[] = Array(9).fill(null)
 
 function App() {
+  const [tiles, setTiles] = useState(initialTiles)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Board>
+      {tiles.map((tile, index) => (
+        <Button key={`tile-${index}`}>Button</Button>
+      ))}
+    </Board>
+  )
 }
 
-export default App;
+export default App

@@ -2,6 +2,13 @@
   "name": "tic-tac-toe",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -10,22 +17,18 @@
     "@types/node": "^12.12.37",
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.7",
+    "@types/styled-components": "^5.1.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-config-react-app": "^5.1.0",
     "eslint-plugin-prettier": "^3.1.2",
+    "husky": "^4.2.1",
+    "lint-staged": "^10.0.4",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
-    "typescript": "^3.7.5",
-    "husky": "^4.2.1",
-    "lint-staged": "^10.0.4",
-    "prop-types": "^15.7.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "styled-components": "^5.1.0",
+    "typescript": "^3.7.5"
   },
   "browserslist": {
     "production": [
@@ -38,5 +41,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
+    "cross-env": "^7.0.2",
+    "prettier": "^2.0.5"
   }
 }

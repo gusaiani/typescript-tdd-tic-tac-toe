@@ -3,10 +3,17 @@
     "browser": true,
     "es2017": true
   },
-  "extends": ["react-app", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "react-app",
+    "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended"
+  ],
   "plugins": ["react", "prettier"],
   "parserOptions": {
-    "ecmaVersion": 2018
+    "ecmaVersion": 2020
   },
   "rules": {
     "react-hooks/exhaustive-deps": "off",
