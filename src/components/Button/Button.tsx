@@ -2,9 +2,14 @@ import * as React from 'react'
 
 import { Container } from './Button.styled'
 
-type Props = { children: string; key: string }
-const Button: React.FC<Props> = ({ children }) => {
-  return <Container>{children}</Container>
+type Props = {
+  children: string
+  key: string
+  handleClick: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
+
+const Button: React.FC<Props> = ({ children, handleClick }) => (
+  <Container onClick={handleClick}>{children}</Container>
+)
 
 export default Button
