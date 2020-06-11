@@ -5,7 +5,7 @@ import './App.css'
 
 const initialTiles: number[] = Array(9).fill(null)
 
-function App() {
+const App: React.FC = () => {
   const [tiles, setTiles] = useState(initialTiles)
   return (
     <Board>
