@@ -1,4 +1,8 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Tic-tac-toe implemented in React and Typescript strictly in TDD
+
+This project is a kata proposed in the book [Agile Technical Practices Distilled](https://leanpub.com/agiletechnicalpracticesdistilled).
+
+It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
