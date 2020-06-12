@@ -22,3 +22,15 @@ test('first tile, when clicked, shows ×', () => {
   user.click(button)
   expect(screen.getByText('×')).toBeInTheDocument()
 })
+
+test('second tile, when clicked, shows ○', () => {
+  render(<App />)
+  const buttons = screen.getAllByRole('button')
+  const [button1, button2] = buttons
+
+  user.click(button1)
+  expect(screen.getByText('×')).toBeInTheDocument()
+
+  user.click(button2)
+  expect(screen.getByText('○')).toBeInTheDocument()
+})
