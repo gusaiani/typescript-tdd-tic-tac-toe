@@ -34,16 +34,51 @@ describe('hasAnyoneWon', () => {
 
       expect(hasAnyoneWon(tiles)).toBe(true)
     })
+  })
 
-    test('did not win', () => {
+  describe('by column', () => {
+    test('won first column', () => {
       // prettier-ignore
       const tiles = [
         '0', '1', '0',
-        '1', '0', '1',
+        '0', '0', '1',
         '0', '1', '0'
       ]
 
-      expect(hasAnyoneWon(tiles)).toBe(false)
+      expect(hasAnyoneWon(tiles)).toBe(true)
     })
+
+    test('won second column', () => {
+      // prettier-ignore
+      const tiles = [
+        '1', '0', '1',
+        '1', '0', '0',
+        '0', '0', '1'
+      ]
+
+      expect(hasAnyoneWon(tiles)).toBe(true)
+    })
+
+    test('won third column', () => {
+      // prettier-ignore
+      const tiles = [
+        '1', '0', '0',
+        '0', '1', '0',
+        '1', '0', '0'
+      ]
+
+      expect(hasAnyoneWon(tiles)).toBe(true)
+    })
+  })
+
+  test('did not win', () => {
+    // prettier-ignore
+    const tiles = [
+      '0', '1', '0',
+      '1', '0', '1',
+      '0', '1', '0'
+    ]
+
+    expect(hasAnyoneWon(tiles)).toBe(false)
   })
 })
