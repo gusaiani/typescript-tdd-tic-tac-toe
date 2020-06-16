@@ -71,14 +71,51 @@ describe('hasAnyoneWon', () => {
     })
   })
 
-  test('did not win', () => {
-    // prettier-ignore
-    const tiles = [
-      '0', '1', '0',
-      '1', '0', '1',
-      '0', '1', '0'
-    ]
+  describe('by diagonals', () => {
+    test('top left to bottom right', () => {
+      // prettier-ignore
+      const tiles = [
+        '0', '1', '1',
+        '1', '0', '1',
+        '0', '1', '0'
+      ]
 
-    expect(hasAnyoneWon(tiles)).toBe(false)
+      expect(hasAnyoneWon(tiles)).toBe(true)
+    })
+
+    test('top right to bottom left', () => {
+      // prettier-ignore
+      const tiles = [
+        '0', '1', '0',
+        '1', '0', '1',
+        '0', '1', '1'
+      ]
+
+      expect(hasAnyoneWon(tiles)).toBe(true)
+    })
+  })
+
+  describe('no winner', () => {
+    test('unclaimed tiles do not mean victory', () => {
+      // prettier-ignore
+      const tiles = [
+        '',  '',  '',
+        '1', '0', '1',
+        '0', '1', '0'
+      ]
+
+      expect(hasAnyoneWon(tiles)).toBe(false)
+    })
+
+    test('a tie', () => {
+      // prettier-ignore
+      const tiles = [
+        '0', '1', '0',
+        '1', '0', '1',
+        '1', '0', '1'
+      ]
+
+      expect(hasAnyoneWon(tiles)).toBe(false)
+    })
   })
 })
