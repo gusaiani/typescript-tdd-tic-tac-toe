@@ -1,11 +1,15 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render as renderRtl, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import App from './App'
 
+const render = (): HTMLElement[] => {
+  renderRtl(<App />)
+  return screen.getAllByRole('button')
+}
+
 test('starts game with 9 empty tiles', () => {
-  render(<App />)
-  const buttons = screen.getAllByRole('button')
+  const buttons = render()
 
   buttons.forEach((button) => {
     expect(button).toHaveTextContent('')
@@ -14,23 +18,22 @@ test('starts game with 9 empty tiles', () => {
   expect(buttons.length).toBe(9)
 })
 
-test('first tile, when clicked, shows ×', () => {
-  render(<App />)
-  const buttons = screen.getAllByRole('button')
-  const [button] = buttons
+describe('a game', () => {
+  test("displays winner text once it's over", () => {
+    const buttons = render()
 
-  user.click(button)
-  expect(screen.getByText('×')).toBeInTheDocument()
-})
+    expect(screen.getByText('No winner')).toBeInTheDocument()
 
-test('second tile, when clicked, shows ○', () => {
-  render(<App />)
-  const buttons = screen.getAllByRole('button')
-  const [button1, button2] = buttons
+    user.click(buttons[0])
+    expect(screen.getByText('×')).toBeInTheDocument()
 
-  user.click(button1)
-  expect(screen.getByText('×')).toBeInTheDocument()
+    user.click(buttons[3])
+    expect(screen.getByText('○')).toBeInTheDocument()
 
-  user.click(button2)
-  expect(screen.getByText('○')).toBeInTheDocument()
+    const buttonsToClick = [1, 4, 2, 5]
+
+    buttonsToClick.forEach((button) => user.click(buttons[button]))
+
+    expect(screen.getByText('We have a winner: ×')).toBeInTheDocument()
+  })
 })
