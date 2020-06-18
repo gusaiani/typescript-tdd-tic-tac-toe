@@ -7,7 +7,7 @@ import './App.css'
 const initialTiles: string[] = Array(9).fill('')
 
 const App: React.FC = () => {
-  const [tiles, setTiles] = useState(initialTiles)
+  const [tiles, setTiles] = useState([...initialTiles])
   const [turn, setTurn] = useState(0)
   const [winner, setWinner] = useState(false)
 
@@ -26,6 +26,12 @@ const App: React.FC = () => {
     }
   }
 
+  const handleNewGame = (): void => {
+    setWinner(false)
+    setTiles([...initialTiles])
+    setTurn(0)
+  }
+
   return (
     <>
       <Board>
@@ -38,7 +44,14 @@ const App: React.FC = () => {
           </Button>
         ))}
       </Board>
-      {winner ? `We have a winner: ${pieces[turn % 2]}` : 'No winner'}
+      {winner ? (
+        <>
+          <div>We have a winner: {pieces[turn % 2]}</div>
+          <button onClick={handleNewGame}>Play again</button>
+        </>
+      ) : (
+        'No winner'
+      )}
     </>
   )
 }

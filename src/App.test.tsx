@@ -35,5 +35,11 @@ describe('a game', () => {
     buttonsToClick.forEach((button) => user.click(buttons[button]))
 
     expect(screen.getByText('We have a winner: ×')).toBeInTheDocument()
+
+    user.click(screen.getByText('Play again'))
+    expect(screen.getByText('No winner')).toBeInTheDocument()
+    buttons.forEach((button) => {
+      expect(button).toHaveTextContent('')
+    })
   })
 })
