@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Board } from './App.styled'
+import { Board, PlayAgainButton } from './App.styled'
 import Button from './components/Button/Button'
 import hasAnyoneWon from './hasAnyoneWon'
 import './App.css'
@@ -56,7 +56,9 @@ const App: React.FC = () => {
         ))}
       </Board>
       {winner && <div>We have a winner: {pieces[turn % 2]}</div>}
-      {gameOver && <button onClick={handleNewGame}>Play again</button>}
+      {gameOver && (
+        <PlayAgainButton onClick={handleNewGame}>Play again</PlayAgainButton>
+      )}
     </>
   )
 }
