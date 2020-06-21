@@ -16,4 +16,10 @@ const PlayAgainButton = styled.button`
   padding: 10px 16px 12px;
 `
 
-export { Board, PlayAgainButton }
+const GithubButtonContainer = styled.div`
+  position: fixed;
+  top: 60px;
+  right: 60px;
+`
+
+export { Board, GithubButtonContainer, PlayAgainButton }

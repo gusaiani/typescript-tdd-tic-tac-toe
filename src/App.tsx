@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Board, PlayAgainButton } from './App.styled'
+import { Board, GithubButtonContainer, PlayAgainButton } from './App.styled'
 import Button from './components/Button/Button'
 import hasAnyoneWon from './hasAnyoneWon'
 import './App.css'
@@ -45,6 +45,18 @@ const App: React.FC = () => {
 
   return (
     <>
+      <GithubButtonContainer>
+        <a
+          className='github-button'
+          href='https://github.com/gusaiani/typescript-tdd-tic-tac-toe'
+          data-icon='octicon-star'
+          data-size='large'
+          data-show-count='true'
+          aria-label='Star gusaiani/typescript-tdd-tic-tac-toe on GitHub'
+        >
+          Star
+        </a>
+      </GithubButtonContainer>
       <Board>
         {tiles.map((tile, index) => (
           <Button
