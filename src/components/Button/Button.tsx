@@ -9,7 +9,9 @@ type Props = {
 }
 
 const Button: React.FC<Props> = ({ children, handleClick }) => (
-  <Container onClick={handleClick}>{children}</Container>
+  <Container onClick={handleClick} className={`tile-${children}`}>
+    {children}
+  </Container>
 )
 
 export default Button

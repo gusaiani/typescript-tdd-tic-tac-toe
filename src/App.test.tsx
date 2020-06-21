@@ -19,10 +19,10 @@ test('starts game with 9 empty tiles', () => {
 })
 
 describe('a game', () => {
-  test("displays winner text once it's over", () => {
+  test("displays winner text once it's over", async () => {
     const buttons = render()
 
-    expect(screen.getByText('No winner')).toBeInTheDocument()
+    expect(screen.queryByText(/we have a winner/i)).toBeNull()
 
     user.click(buttons[0])
     expect(screen.getByText('×')).toBeInTheDocument()
@@ -30,16 +30,26 @@ describe('a game', () => {
     user.click(buttons[3])
     expect(screen.getByText('○')).toBeInTheDocument()
 
-    const buttonsToClick = [1, 4, 2, 5]
+    let buttonsToClick = [1, 4, 2, 5]
 
     buttonsToClick.forEach((button) => user.click(buttons[button]))
 
     expect(screen.getByText('We have a winner: ×')).toBeInTheDocument()
 
     user.click(screen.getByText('Play again'))
-    expect(screen.getByText('No winner')).toBeInTheDocument()
+    expect(screen.queryByText(/we have a winner/i)).toBeNull()
     buttons.forEach((button) => {
       expect(button).toHaveTextContent('')
     })
+
+    buttonsToClick = [1, 0, 2, 4, 3, 5, 6, 7, 8]
+
+    buttonsToClick.forEach((button) => user.click(buttons[button]))
+
+    const playAgainButton = await screen.findByRole('button', {
+      name: /play again/i,
+    })
+
+    expect(playAgainButton).toBeInTheDocument()
   })
 })

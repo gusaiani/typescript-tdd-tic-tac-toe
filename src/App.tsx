@@ -10,12 +10,22 @@ const App: React.FC = () => {
   const [tiles, setTiles] = useState([...initialTiles])
   const [turn, setTurn] = useState(0)
   const [winner, setWinner] = useState(false)
+  const [gameOver, setGameOver] = useState(false)
 
   const pieces: string[] = ['×', '○']
+
+  const isTie = (): boolean => {
+    return !tiles.some((tile) => tile === '')
+  }
+
+  useEffect(() => {
+    if (winner) setGameOver(true)
+  }, [winner])
 
   useEffect(() => {
     if (!tiles.includes(pieces[0])) return
     if (hasAnyoneWon(tiles)) return setWinner(true)
+    if (isTie()) return setGameOver(true)
     setTurn((t) => t + 1)
   }, [tiles])
 
@@ -28,6 +38,7 @@ const App: React.FC = () => {
 
   const handleNewGame = (): void => {
     setWinner(false)
+    setGameOver(false)
     setTiles([...initialTiles])
     setTurn(0)
   }
@@ -44,14 +55,8 @@ const App: React.FC = () => {
           </Button>
         ))}
       </Board>
-      {winner ? (
-        <>
-          <div>We have a winner: {pieces[turn % 2]}</div>
-          <button onClick={handleNewGame}>Play again</button>
-        </>
-      ) : (
-        'No winner'
-      )}
+      {winner && <div>We have a winner: {pieces[turn % 2]}</div>}
+      {gameOver && <button onClick={handleNewGame}>Play again</button>}
     </>
   )
 }
