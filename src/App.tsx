@@ -6,23 +6,23 @@ import './App.css'
 
 const initialTiles: string[] = Array(9).fill('')
 
+const pieces: string[] = ['×', '○']
+
 const App: React.FC = () => {
   const [tiles, setTiles] = useState([...initialTiles])
   const [turn, setTurn] = useState(0)
   const [winner, setWinner] = useState(false)
   const [gameOver, setGameOver] = useState(false)
 
-  const pieces: string[] = ['×', '○']
-
-  const isTie = (): boolean => {
-    return !tiles.some((tile) => tile === '')
-  }
-
   useEffect(() => {
     if (winner) setGameOver(true)
   }, [winner])
 
   useEffect(() => {
+    const isTie = (): boolean => {
+      return !tiles.some((tile) => tile === '')
+    }
+
     if (!tiles.includes(pieces[0])) return
     if (hasAnyoneWon(tiles)) return setWinner(true)
     if (isTie()) return setGameOver(true)

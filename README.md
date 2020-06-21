@@ -4,6 +4,10 @@ This project is a kata proposed in the book [Agile Technical Practices Distilled
 
 It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Play it
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
